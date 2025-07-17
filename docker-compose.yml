@@ -1,0 +1,35 @@
+services:
+  postgres:
+    image: postgres:15
+    container_name: db-videos
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: finish24hours
+      POSTGRES_DB: videosdb
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    networks:
+      - video-net
+
+  api:
+    build:
+      context: ./src/bff/BFF
+    container_name: api-videos
+    ports:
+      - "5000:80"
+    depends_on:
+      - postgres
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+      ConnectionStrings__DefaultConnection: "Host=postgres;Port=5432;Database=videosdb;Username=admin;Password=finish24hours"
+    networks:
+      - video-net
+
+volumes:
+  pgdata:
+
+networks:
+  video-net:

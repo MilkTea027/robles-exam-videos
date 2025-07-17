@@ -1,0 +1,15 @@
+.home-page {
+  padding: 2rem;
+
+  .video-card {
+    margin-bottom: 1.5rem;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    overflow: hidden;
+  }
+
+  img {
+    width: 100%;
+    height: auto;
+  }
+}
