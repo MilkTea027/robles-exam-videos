@@ -1,9 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.14.36310.24 d17.14
+VisualStudioVersion = 17.14.36310.24
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BFF.Videos", "BFF.Videos\BFF.Videos.csproj", "{0041A475-D8AE-4EAB-91B5-279AD13DDA21}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BFF.Videos.Tests", "BFF.Videos.Tests\BFF.Videos.Tests.csproj", "{FB6B1F2D-4AB8-4637-B64A-A865CD614DF1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{0041A475-D8AE-4EAB-91B5-279AD13DDA21}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0041A475-D8AE-4EAB-91B5-279AD13DDA21}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0041A475-D8AE-4EAB-91B5-279AD13DDA21}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FB6B1F2D-4AB8-4637-B64A-A865CD614DF1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FB6B1F2D-4AB8-4637-B64A-A865CD614DF1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FB6B1F2D-4AB8-4637-B64A-A865CD614DF1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FB6B1F2D-4AB8-4637-B64A-A865CD614DF1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
