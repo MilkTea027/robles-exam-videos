@@ -1,0 +1,6 @@
+@BFF.Videos_HostAddress = http://localhost:5116
+
+GET {{BFF.Videos_HostAddress}}/api/videos/
+Accept: application/json
+
+###
