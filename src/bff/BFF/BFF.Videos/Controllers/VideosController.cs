@@ -26,9 +26,9 @@ namespace BFF.Videos.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Create([FromForm] Video video, IFormFile file)
+        public async Task<IActionResult> Create([FromForm] Video video, IFormFile file, IFormFile thumbnail)
         {
-            var videoId = await _videoService.CreateAsync(video, file);
+            var videoId = await _videoService.CreateAsync(video, file, thumbnail);
             return CreatedAtAction(nameof(Get), new { id = videoId }, videoId);
         }
     }

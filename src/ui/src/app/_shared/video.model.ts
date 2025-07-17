@@ -1,7 +1,4 @@
-export interface Category {
-  id: number;
-  name: string;
-}
+import { Category } from './cateogry.model';
 
 export interface Video {
   id: number;

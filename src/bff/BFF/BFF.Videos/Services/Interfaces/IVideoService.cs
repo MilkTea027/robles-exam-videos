@@ -6,6 +6,6 @@ namespace BFF.Videos.Services.Interfaces
     {
         Task<IEnumerable<Video>> GetAllAsync();
 
-        Task<int> CreateAsync(Video video, IFormFile file);
+        Task<int> CreateAsync(Video video, IFormFile file, IFormFile thumbnail);
     }
 }

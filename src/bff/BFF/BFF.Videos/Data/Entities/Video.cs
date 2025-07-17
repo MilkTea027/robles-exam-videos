@@ -15,6 +15,7 @@ namespace BFF.Videos.Data.Entities
 
         public string? Description { get; set; }
 
+        [Required]
         [ForeignKey("Category")]
         public int CategoryId { get; set; }
 
@@ -22,6 +23,6 @@ namespace BFF.Videos.Data.Entities
 
         public long Size { get; set; }
 
-        public required Category Category { get; set; }
+        public Category? Category { get; set; }
     }
 }

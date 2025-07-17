@@ -6,14 +6,10 @@ namespace BFF.Videos.Services
 {
     public class VideoService : IVideoService
     {
-        private readonly IWebHostEnvironment _env;
         private readonly IVideoRepository _repository;
 
-        public VideoService(
-            IWebHostEnvironment env,
-            IVideoRepository repository)
+        public VideoService(IVideoRepository repository)
         {
-            _env = env;
             _repository = repository;
         }
 
@@ -22,23 +18,33 @@ namespace BFF.Videos.Services
             return await _repository.GetAllAsync();
         }
 
-        public async Task<int> CreateAsync(Video video, IFormFile file)
+        public async Task<int> CreateAsync(Video video, IFormFile file, IFormFile thumbnail)
         {
-            var filename = Path.GetExtension(file.FileName).ToLowerInvariant();
-            ValidateVideoFile(file, filename);
+            var videoExtension = Path.GetExtension(file.FileName).ToLowerInvariant();
+            ValidateVideoFile(file, videoExtension);
 
-            var uploads = Path.Combine(_env.WebRootPath, "uploads");
+            var uploads = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot","uploads");
             Directory.CreateDirectory(uploads);
 
-            var uniqueName = $"{Guid.NewGuid()}{filename}";
-            var filePath = Path.Combine(uploads, uniqueName);
+            var videoFileName = $"{Guid.NewGuid()}{videoExtension}";
+            var videoFilePath = Path.Combine(uploads, videoFileName);
 
-            using (var stream = new FileStream(filePath, FileMode.Create))
+            
+            using (var stream = new FileStream(videoFilePath, FileMode.Create))
             {
                 await file.CopyToAsync(stream);
             }
 
-            video.File = uniqueName;
+            var thumbnailFileName = $"{Guid.NewGuid()}{Path.GetExtension(thumbnail.FileName)}";
+            var thumbnailFilePath = Path.Combine(uploads, thumbnailFileName);
+
+            using (var stream = new FileStream(thumbnailFilePath, FileMode.Create))
+            {
+                await thumbnail.CopyToAsync(stream);
+            }
+
+            video.Thumbnail = thumbnailFileName;
+            video.File = videoFileName;
             video.Size = file.Length;
 
             return await _repository.CreateAsync(video);

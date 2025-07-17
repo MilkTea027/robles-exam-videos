@@ -1,9 +1,43 @@
 <div class="upload-page">
-    <!-- <form (submit)="onSubmit()" enctype="multipart/form-data">
-        <label>Title: <input type="text" [(ngModel)]="title" name="title" required /></label>
-        <label>Description: <textarea [(ngModel)]="description" name="description" maxlength="160"></textarea></label>
-        <label>Categories (comma separated): <input type="text" [(ngModel)]="categories" name="categories" /></label>
-        <label>Video File: <input type="file" (change)="onFileSelected($event)" accept=".mp4,.avi,.mov" /></label>
-        <button type="submit">Upload</button> 
-    </form>-->
+    <h2>Upload New Video</h2>
+    
+    <form (ngSubmit)="uploadVideo()" #uploadForm="ngForm">
+        <div>
+            <label for="name">Name:</label>
+            <input id="name" name="name" [(ngModel)]="name" required />
+        </div>
+        
+        <div>
+            <label for="description">Description:</label>
+            <textarea id="description" name="description" [(ngModel)]="description"></textarea>
+        </div>
+        
+        <div>
+            <div *ngIf="loadingCategories">Loading categories...</div>
+
+            <div *ngIf="!loadingCategories">
+                <label for="category">Category:</label>
+                <select id="category" name="categoryId" [(ngModel)]="categoryId" required>
+                    <option *ngFor="let category of categories" [value]="category.id">{{ category.name }}</option>
+                </select>
+            </div>
+            
+        </div>
+        
+        <div>
+            <label for="thumbnail">Thumbnail:</label>
+            <input type="file" id="thumbnail" (change)="onFileSelected($event, true)" accept="image/*" required />
+        </div>
+        
+        <div>
+            <label for="file">Video File:</label>
+            <input type="file" id="file" (change)="onFileSelected($event)" accept=".mp4, .avi, .mov" required />
+        </div>
+        
+        <button type="submit" [disabled]="!uploadForm.form.valid">Upload</button>
+    
+    </form>
+    
+    <div *ngIf="uploadSuccess" class="success">Upload successful!</div>
+    <div *ngIf="uploadError" class="error">{{ uploadError }}</div>
 </div>
