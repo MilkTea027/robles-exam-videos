@@ -1,12 +1,13 @@
 <div class="home-page">
+    <h1>Videos:</h1>
     <div class="video-list">
-        <!-- <div class="video-card" *ngFor="let video of videos">
-            <img [src]="video.thumbnailUrl" [alt]="video.title" />
+        <div class="video-card" *ngFor="let video of videos">
+            <img [src]="env.apiUrl + '/thumbnails/' + video.thumbnail" [alt]="video.name" />
             <div class="video-info">
-                <h3>{{ video.title }}</h3>
+                <h3>{{ video.name }}</h3>
                 <p>{{ video.description }}</p>
-                <p class="category-list">{{ video.categories.join(', ') }}</p>
+                <p>{{ video.category?.name }}</p>
             </div>
-        </div> -->
+        </div>
     </div>
 </div>

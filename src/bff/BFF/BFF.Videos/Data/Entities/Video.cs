@@ -18,7 +18,7 @@ namespace BFF.Videos.Data.Entities
         [ForeignKey("Category")]
         public int CategoryId { get; set; }
 
-        public required string File { get; set; }
+        public string? File { get; set; }
 
         public long Size { get; set; }
 

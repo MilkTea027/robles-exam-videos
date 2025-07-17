@@ -28,6 +28,18 @@ services:
     networks:
       - video-net
 
+  ui:
+    build:
+      context: ./src/ui
+      dockerfile: Dockerfile
+    container_name: ui-videos
+    ports:
+      - "4200:80"
+    depends_on:
+      - api
+    networks:
+      - video-net
+
 volumes:
   pgdata:
 
