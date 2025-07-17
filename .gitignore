@@ -1,0 +1,39 @@
+# Ignore all bin and obj folders anywhere in the repo
+**/bin/
+**/obj/
+
+# Ignore user-specific and IDE config
+**/*.user
+**/*.suo
+**/*.userosscache
+**/*.sln.docstates
+
+# Visual Studio and VS Code
+.vscode/
+**/.vs/
+
+# Rider (if used)
+**/.idea/
+
+# Logs and temp files
+**/*.log
+**/*.tmp
+
+# OS
+Thumbs.db
+.DS_Store
+
+# Node & packages
+**/node_modules/
+**/packages/
+**/*.nupkg
+
+# Env files
+**/*.env
+**/*.env.*
+
+# DB & publish
+**/*.db
+**/*.sqlite
+**/*.bak
+**/publish/
