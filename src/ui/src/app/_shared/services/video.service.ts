@@ -8,15 +8,15 @@ import { environment } from '../../../environments/environment.local';
   providedIn: 'root'
 })
 export class VideoService {
-  private apiUrl = `${environment.apiUrl}/videos`;
-
-  constructor(private http: HttpClient) {}
-
-  getAll(): Observable<Video[]> {
-    return this.http.get<Video[]>(this.apiUrl);
-  }
-
-  getById(id: number): Observable<Video> {
-    return this.http.get<Video>(`${this.apiUrl}/${id}`);
-  }
+    private apiUrl = `${environment.apiUrl}/videos`;
+    
+    constructor(private http: HttpClient) {}
+    
+    getAll(): Observable<Video[]> {
+        return this.http.get<Video[]>(this.apiUrl);
+    }
+    
+    upload(formData: FormData) {
+        return this.http.post(this.apiUrl, formData);
+    }
 }

@@ -9,4 +9,8 @@ import { RouterOutlet } from '@angular/router';
 })
 export class App {
   protected readonly title = signal('robles-video-exam');
+
+  getTitle() {
+    return this.title();
+  }
 }

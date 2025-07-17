@@ -1,5 +1,6 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
 import { VideoService } from '../../_shared/services/video.service';
 import { Video } from '../../_shared/video.model';
 import { environment } from '../../../environments/environment.local';
@@ -7,7 +8,7 @@ import { environment } from '../../../environments/environment.local';
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule ],
+  imports: [CommonModule, RouterModule],
   templateUrl: './home.html',
   styleUrl: './home.scss'
 })

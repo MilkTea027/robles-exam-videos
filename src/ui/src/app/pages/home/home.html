@@ -1,13 +1,21 @@
 <div class="home-page">
-    <h1>Videos:</h1>
-    <div class="video-list">
-        <div class="video-card" *ngFor="let video of videos">
-            <img [src]="env.apiUrl + '/thumbnails/' + video.thumbnail" [alt]="video.name" />
-            <div class="video-info">
-                <h3>{{ video.name }}</h3>
-                <p>{{ video.description }}</p>
-                <p>{{ video.category?.name }}</p>
-            </div>
+  <div class="top-bar">
+    <h2>Videos:</h2>
+    <button routerLink="/upload" class="upload-button">Upload Video</button>
+  </div>
+
+  <div class="video-list">
+    <div *ngIf="videos?.length === 0" class="no-videos">
+      There are no videos uploaded yet.
+    </div>
+
+    <div class="video-card" *ngFor="let video of videos">
+        <img [src]="env.apiUrl + '/uploads/' + video.thumbnail" width="250" [alt]="video.name" />
+        <div class="video-info">
+            <h3>{{ video.name }}</h3>
+            <p>{{ video.description }}</p>
+            <p class="category">{{ video.category.name }}</p>
         </div>
+    </div>
     </div>
 </div>
