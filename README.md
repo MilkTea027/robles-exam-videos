@@ -14,6 +14,7 @@ A simple .NET 8 + PostgreSQL API for managing videos and categories. Built with 
 ## 🚀 Quick Start (Recommended)
 
 ```bash
-git clone <this-repo-url>
+git clone https://github.com/MilkTea027/robles-exam-videos.git
 cd robles-exam-videos
-docker-compose up --build -d
+docker-compose build --no-cache
+docker-compose up -d
